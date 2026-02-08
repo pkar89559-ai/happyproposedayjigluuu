@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Chocolate Day Jigisha ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+    margin:0;
+    font-family:Poppins;
+    background: linear-gradient(to right,#3e2723,#6d4c41);
+    color:white;
+    text-align:center;
+    overflow-x:hidden;
+    overflow-y:auto;
+}
+
+h1{
+    font-family:"Great Vibes", cursive;
+    font-size:55px;
+    margin-top:20px;
+}
+
+.card{
+    background: rgba(255,255,255,0.1);
+    margin:20px auto;
+    padding:20px;
+    border-radius:20px;
+    width:80%;
+    box-shadow:0 0 15px rgba(0,0,0,0.4);
+    backdrop-filter: blur(5px);
+    position:relative;
+    z-index:2;
+}
+
+.teddy{
+    width:120px;
+    margin:10px;
+}
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:20px;
+    font-size:18px;
+    background:#ff4081;
+    color:white;
+    cursor:pointer;
+    margin:10px;
+}
+
+.popup{
+    display:none;
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background:white;
+    color:#333;
+    padding:25px;
+    width:80%;
+    max-width:400px;
+    border-radius:20px;
+    box-shadow:0 0 20px black;
+    z-index:5;
+}
+
+.rain{
+    position:fixed;
+    top:-50px;
+    font-size:25px;
+    animation: fall linear infinite;
+    z-index:1;
+}
+
+@keyframes fall{
+    0%{transform:translateY(-50px);}
+    100%{transform:translateY(110vh);}
+}
+
+.heart{
+    position:fixed;
+    bottom:-20px;
+    font-size:22px;
+    animation: heartFloat 5s linear infinite;
+    z-index:1;
+}
+
+@keyframes heartFloat{
+    0%{transform:translateY(0);}
+    100%{transform:translateY(-110vh);}
+}
+
+footer{
+    margin-top:30px;
+    padding:15px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Happy Chocolate Day Jigisha 🍫❤️</h1>
+
+<img class="teddy" src="https://cdn-icons-png.flaticon.com/512/616/616408.png">
+<img class="teddy" src="https://cdn-icons-png.flaticon.com/512/616/616430.png">
+
+<div class="card">
+You are sweeter than every chocolate in this world 🍫💕  
+My life feels magical because of you, Jigisha 😘
+</div>
+
+<div class="card">
+Like chocolates bring happiness, you bring endless smiles to my life 😊❤️
+</div>
+
+<div class="card">
+Every moment with you feels warm, sweet and special 🧸💖
+</div>
+
+<div class="card">
+I wish I could gift you unlimited chocolates and hugs forever 🍫🤗
+</div>
+
+<button onclick="openLetter()">Open Love Letter 💌</button>
+<button onclick="showQuestion()">Special Surprise 💞</button>
+
+<!-- Love Letter Popup -->
+<div class="popup" id="letter">
+<h2>For My Sweet Jigluuuu ❤️</h2>
+<p>
+Dear Jigisha,<br><br>
+You are the sweetest chocolate of my life 🍫💖  
+Every moment with you feels like a beautiful dream.  
+Your smile makes my day brighter and your presence makes my world happier.  
+<br><br>
+Thank you for being mine.  
+I promise to always care for you and make you smile.  
+<br><br>
+Happy Chocolate Day My Cutiee Pieeee ❤️🧸
+</p>
+<button onclick="closeLetter()">Close</button>
+</div>
+
+<!-- Surprise Question Popup -->
+<div class="popup" id="questionBox">
+<h2>Jigluuuu ❤️</h2>
+<p>Will you always stay with me? 🥺💖</p>
+
+<button onclick="yesAnswer()">Yes 💕</button>
+<button id="noBtn" onmouseover="moveNo()">No 😜</button>
+</div>
+
+<!-- YES Message -->
+<div class="popup" id="yesMsg">
+<h2>Yayyyy ❤️🥰</h2>
+<p>You just made me the happiest person alive , I love youuu Jigluuuuuu 💞🍫</p>
+<button onclick="closeYes()">Close</button>
+</div>
+
+<footer>
+Made with ❤️ only for Jigisha 🧸🍫
+</footer>
+
+<script>
+
+/* Love Letter */
+function openLetter(){
+    document.getElementById("letter").style.display="block";
+}
+
+function closeLetter(){
+    document.getElementById("letter").style.display="none";
+}
+
+/* Surprise Question */
+function showQuestion(){
+    document.getElementById("questionBox").style.display="block";
+}
+
+function yesAnswer(){
+    document.getElementById("questionBox").style.display="none";
+    document.getElementById("yesMsg").style.display="block";
+}
+
+function closeYes(){
+    document.getElementById("yesMsg").style.display="none";
+}
+
+/* NO Button Escape + Text Change */
+
+let noTexts = [
+    "No 😜",
+    "Are you sure? 🥺",
+    "Think again 💞",
+    "Really sure? 😏",
+    "Last chance ❤️"
+];
+
+let noIndex = 0;
+
+function moveNo(){
+    const noBtn = document.getElementById("noBtn");
+
+    noIndex = (noIndex + 1) % noTexts.length;
+    noBtn.innerHTML = noTexts[noIndex];
+
+    const x = Math.random() * (window.innerWidth - 120);
+    const y = Math.random() * (window.innerHeight - 60);
+
+    noBtn.style.position = "absolute";
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+}
+
+/* Chocolate Rain */
+function createChocolate(){
+    const choco=document.createElement("div");
+    choco.classList.add("rain");
+    choco.innerHTML="🍫";
+    choco.style.left=Math.random()*100+"vw";
+    choco.style.animationDuration=(Math.random()*3+2)+"s";
+    document.body.appendChild(choco);
+
+    setTimeout(()=>{choco.remove();},5000);
+}
+setInterval(createChocolate,300);
+
+/* Floating Hearts */
+function createHeart(){
+    const heart=document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML="❤️";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDuration=(Math.random()*3+3)+"s";
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{heart.remove();},6000);
+}
+setInterval(createHeart,800);
+
+</script>
+
+</body>
+</html>
